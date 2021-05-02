@@ -15,7 +15,7 @@ const createCardList = (array) => {
   });
 };
 
-fetch("http://jsonplaceholder.typicode.com/users")
+fetch("https://jsonplaceholder.typicode.com/users")
   .then((data) => {
     return data.text();
     // return data.json();
