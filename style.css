@@ -16,9 +16,34 @@ body {
 }
 
 .heading {
-  font-family: "Freckle Face", cursive;
   font-size: 60px;
   height: 10vh;
+  color: white;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-family: "Freckle Face", cursive;
+  text-shadow: 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+input {
+  display: block;
+  width: 250px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 5px 10px;
+  color: white;
+  text-align: center;
+}
+
+input:focus {
+  outline: none;
 }
 
 .container {
@@ -27,7 +52,7 @@ body {
   box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 30px;
   padding: 20px 15px;
-  margin: 0 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
   overflow: scroll;
 
@@ -42,10 +67,9 @@ body {
   width: 350px;
   height: 280px;
   background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(3.2px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 
   padding: 20px;
 
@@ -63,7 +87,7 @@ body {
   padding: 10px;
   border-radius: 15px;
   color: white;
-  box-shadow: inset 0 5px 12px 0 rgba(31, 38, 135, 0.37);
+  box-shadow: inset 0 5px 12px 0 rgba(182, 182, 182, 0.37);
 }
 
 .name-content,
@@ -77,19 +101,21 @@ body {
 /* for circles */
 
 .circle1,
-.circle2 {
+.circle2,
+.circle3,
+.circle4 {
   position: absolute;
   border-radius: 50%;
-  filter: blur(8px);
-  z-index: -5;
 }
 
 .circle1 {
   background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   top: -100px;
   left: -100px;
+  z-index: -2;
+  filter: blur(4px);
 }
 
 .circle2 {
@@ -98,6 +124,18 @@ body {
   height: 800px;
   bottom: -150px;
   right: -110px;
+  z-index: -2;
+  filter: blur(3px);
+}
+
+.circle3 {
+  background-image: linear-gradient(120deg, #38ffff 0%, #3e61ff 100%);
+  width: 300px;
+  height: 300px;
+  bottom: -50px;
+  left: -10px;
+  z-index: -2;
+  filter: blur(2px);
 }
 
 /* for animaiton */
@@ -112,3 +150,16 @@ body {
     opacity: 1;
   }
 }
+
+/* styles for particle js */
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+/* Input styles */
