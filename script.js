@@ -3,6 +3,8 @@ const input = document.querySelector("input");
 
 let usersArray = [];
 
+const url = "http://localhost:8000";
+
 const createCardList = (array) => {
   container.innerHTML = "";
 
@@ -15,15 +17,13 @@ const createCardList = (array) => {
   });
 };
 
-fetch("https://jsonplaceholder.typicode.com/users")
+fetch(url)
   .then((data) => {
-    return data.text();
-    // return data.json();
-    // console.log ka example
+    return data.json();
   })
   .then((result) => {
-    console.log(JSON.parse(result));
-    usersArray = JSON.parse(result);
+    console.log(result);
+    usersArray = result;
     createCardList(usersArray);
   });
 
@@ -42,3 +42,39 @@ input.addEventListener("input", (event) => {
 
 // particle js configuration
 particlesJS.load("particles-js", "particles.json");
+
+const addUserButton = document.querySelector(".controls img");
+
+addUserButton.addEventListener("click", () => {
+  const username = prompt("enter your username");
+  const email = prompt("enter your email");
+
+  const newUser = {
+    username,
+    email,
+  };
+
+  const secretKey = prompt("enter secret key");
+
+  const bodyData = {
+    newUser,
+    secretKey,
+  };
+
+  fetch(`${url}/adddata`, {
+    method: "POST",
+    body: JSON.stringify(bodyData),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((data) => data.json())
+    .then((result) => {
+      usersArray = result;
+      createCardList(result);
+    })
+    .catch((error) => {
+      console.log(error);
+      alert("User not added");
+    });
+});
